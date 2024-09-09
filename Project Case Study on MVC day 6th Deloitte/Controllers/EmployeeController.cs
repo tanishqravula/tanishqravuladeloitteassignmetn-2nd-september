@@ -49,11 +49,11 @@ namespace WebApplication4.Controllers
 
            if (!string.IsNullOrEmpty(department))
             {
-                employees=_db.Employees.Where(e =>e.Department==department).ToList();
+                employees=_db.Employees.Where(e =>e.Department==department).OrderBy(e =>e.Name).ToList();
             }
             else
             {
-                employees = _db.Employees.ToList();
+                employees = _db.Employees.OrderBy(e =>e.Name).ToList();
             }
            return View(employees);
         }
